@@ -1,0 +1,17 @@
+{{ partial "header.html" . }}
+<div id="content">
+    <div id="main" class="single-content">
+        <main>
+{{ range .Data.Pages }}
+<li>
+    <div class="date">{{ .Date.Format "2006.01.02 (Mon)" }}</div>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+</li>
+{{ end }}
+            <div class="pagenation-wrap">
+            </div>
+        </main>
+    </div>
+    {{ partial "side.html" . }}
+</div>
+{{ partial "footer.html" . }}

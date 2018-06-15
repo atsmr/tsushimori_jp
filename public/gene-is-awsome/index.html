@@ -1,0 +1,837 @@
+<!doctype html>
+<html amp lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Gene - Atsushi Mori&#39;s blog</title>
+        <link rel="canonical" href="http://jp.atsushimori.com/gene-is-awsome/">
+        <link rel="icon" href="/img/favicon.png">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <style amp-custom>
+    @font-face {
+        font-family: 'Marcellus';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Marcellus'), local('Marcellus-Regular'), url(https://fonts.gstatic.com/s/marcellus/v4/FJNab1jzp1t7ctjNl8ugHJBw1xU1rKptJj_0jans920.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000
+    }
+    html, body, p, img, h1, h2, h3, a, span, li, ul, figure {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        line-height: 1;
+        font-weight: normal;
+        color: #000
+    }
+    body {
+        font-family: "Marcellus", "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+        font-size: 14px;
+        line-height: 22px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-appearance: none;
+        background: #fff
+    }
+    img {
+        max-width: 100%;
+        height: auto
+    }
+    figure {
+        line-height: 1.8
+    }
+    figcaption {
+        color: #666;
+        text-align: right;
+        font-size: 12px;
+        padding: 8px 0 0
+    }
+    pre {
+        color: #fff;
+        margin: 20px 0 0 0;
+        background: #1c1c1c;
+        padding: 20px 30px;
+        letter-spacing: 2px;
+        font-size: 14px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px
+    }
+    input[type="submit"] {
+        background: #01ff2b;
+        font-weight: bold;
+        border: none;
+        color: #000;
+        padding: 10px 20px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        border-radius: 5px;
+        cursor: pointer
+    }
+    .align-right {
+        float: right
+    }
+    #container {
+        width: 1110px;
+        margin: 0 auto
+    }
+    #header {
+        display: table;
+        padding: 70px 0 50px
+    }
+    .logo, .location {
+        display: table-cell;
+        text-align: left
+    }
+    .logo {
+        min-width: 290px
+    }
+    .logo a {
+        font-size: 32px;
+        font-weight: normal;
+        text-decoration: none;
+        color: #000;
+        letter-spacing: 1px
+    }
+    .content.pages {
+        padding-bottom: 35px
+    }
+    .content.single {
+        padding-bottom: 35px
+    }
+    .location p {
+        font-size: 22px;
+        text-transform: uppercase
+    }
+    #content:after, #side:after {
+        content: '';
+        clear: both;
+        display: block
+    }
+    #side {
+        float: left;
+        width: 250px
+    }
+    #main {
+        float: right;
+        width: 820px
+    }
+    #outLink {
+        width: 60px;
+        float: left;
+        border-top: 1px solid #ebebeb
+    }
+    #localNav {
+        border-top: 1px solid #ebebeb;
+        width: 170px;
+        float: right
+    }
+    .locakNavItem {
+        list-style-type: none;
+        margin: 0;
+        padding: 0
+    }
+    .locakNavItem li a:hover {
+        background: #f8f8f8
+    }
+    .localNavArchives {
+        margin-top: 10px
+    }
+    .localNavArchives li {
+        list-style-type: none
+    }
+    .localNavArchives li a {
+        color: #333;
+        text-transform: uppercase;
+        font-size: 12px;
+        text-decoration: none;
+        letter-spacing: 1px;
+        padding: 8px 14px;
+        display: block
+    }
+    .localNavArchives li a:hover {
+        color: #000
+    }
+    .math, .blog, .programming {
+        color: #000;
+        padding: 16px 0 16px 15px;
+        border-bottom: 1px solid #ebebeb;
+        font-size: 12px;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        letter-spacing: 1px
+    }
+    .math:before {
+        content: '';
+        background: #fabe00;
+        width: 5px;
+        height: 9px;
+        left: 0;
+        top: 39%;
+        position: absolute
+    }
+    .blog:before {
+        content: '';
+        background: #d9374b;
+        width: 5px;
+        height: 9px;
+        left: 0;
+        top: 39%;
+        position: absolute
+    }
+    .programming:before {
+        content: '';
+        background: #00a0da;
+        width: 5px;
+        height: 9px;
+        left: 0;
+        top: 39%;
+        position: absolute
+    }
+    .single-content-header:after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+    .single-content .content p {
+        line-height: 1.8;
+        max-width: 530px;
+        margin-top: 25px
+    }
+    .single-content .content figure {
+        margin-top: 40px
+    }
+    .single-content .content ul {
+        margin-top: 25px;
+        font-size: 15px;
+        max-width: 530px
+    }
+    .single-content .content ul li {
+        color: #000;
+        line-height: 1.6;
+        list-style-type: square;
+        margin-bottom: 8px
+    }
+    .single-content .content ul li a {
+        font-size: 17px;
+        font-weight: bold;
+        text-decoration: none;
+        border-bottom: 1px dashed #01ff2b
+    }
+    .single-content .content ol li figure {
+        margin-top: 20px
+    }
+    .single-content .content p a {
+        text-decoration: none;
+        border-bottom: 1px dashed #01ff2b
+    }
+    .single-content .content h2 {
+        font-size: 22px;
+        margin-top: 40px
+    }
+    .single-content .content h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px
+    }
+    .single-content-parts, .tags {
+        display: table-cell;
+        vertical-align: top;
+    }
+    #disqus_thread {
+        max-width: 100%;
+    }
+    .commentlist {
+        margin-bottom: 50px
+    }
+    .title, .image {
+        float: left;
+    }
+    .title:after, .image:after {
+        content: '';
+        clear: both;
+    }
+    .title {
+        width: 530px;
+    }
+    .image {
+        width: 90px;
+        margin: 0 30px;
+    }
+    .tags {
+        min-width: 139px;
+        text-align: right;
+        vertical-align: top
+    }
+    .tags li {
+        list-style-type: none;
+        font-size: 12px;
+        letter-spacing: 2px
+        text-decoration: none;
+        color: #999;
+        margin-bottom: 15px;
+        display: block;
+        text-transform: uppercase
+    }
+    .title h1 {
+        font-size: 32px;
+        line-height: 1.3
+    }
+    .date {
+        color: #ccc;
+        font-size: 14px;
+        margin-top: 10px
+    }
+    .home-article a {
+        padding: 35px 0;
+        height: 100%;
+        display: table;
+        text-decoration: none;
+    }
+    .home-article.cat-algorithms:hover h1:after {
+        content: '●';
+        margin-left: 10px;
+        color: #fabe00;
+    }
+    .home-article.cat-blog:hover h1:after {
+        content: '●';
+        margin-left: 10px;
+        color: #d9374b;
+    }
+    .home-article.cat-programming:hover h1:after {
+        content: '●';
+        margin-left: 10px;
+        color: #00a0da
+    }
+    .home-article h1 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .home-article.cat-programming {
+        border-top: 1px solid #00a0da
+    }
+    .cat-programming h1 a {
+        text-decoration: none;
+        color: #00a0da
+    }
+    .title-programming {
+        color: #00a0da;
+        text-decoration: none
+    }
+    .home-article.cat-algorithms {
+        border-top: 1px solid #fabe00
+    }
+    .cat-algorithms h1 a {
+        text-decoration: none;
+    }
+    .title-algorithms {
+        color: #fabe00;
+        text-decoration: none
+    }
+    .home-article.cat-blog {
+        border-top: 1px solid #d9374b
+    }
+    .cat-blog h1 a {
+        text-decoration: none;
+    }
+    .title-blog {
+        color: #d9374b;
+        text-decoration: none
+    }
+    .outNavItem li {
+        list-style-type: none;
+        text-align: center
+    }
+    .outNavItem li a {
+        display: block;
+        padding: 10.5px 0;
+        position: relative;
+    }
+    .outNavItem li a:hover:after {
+        content: '';
+        position: absolute;
+        height: 10px;
+        border-left: 5px solid #ebebeb;
+        left: 0;
+        top: 16px;
+    }
+    .comments {
+        background: #1c1c1c;
+        margin-top: 50px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px;
+        padding: 30px
+    }
+    .commentlist {
+        padding: 0
+    }
+    .commentlist li {
+        list-style-type: none;
+        border-left: 2px solid #666;
+        padding-left: 20px;
+        font-style: italic;
+        margin-top: 20px;
+        font-size: 16px
+    }
+    .comment-author img {
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%
+    }
+    .comment-meta a {
+        font-size: 12px;
+        color: #666;
+        text-decoration: none;
+        margin-top: 10px;
+        display: inline-block
+    }
+    .comment-reply-link {
+        background: #666;
+        border: none;
+        box-shadow: none;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        padding: 3px 10px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px;
+        margin-top: 10px
+    }
+    .comments input[type="text"] {
+        padding: 11px;
+        min-width: 480px;
+        font-size: 14px;
+        background: #fff;
+        border: none;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px
+    }
+    .comments textarea {
+        padding: 11px;
+        min-width: 480px;
+        font-size: 14px;
+        background: #fff;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px
+    }
+    .comment {
+        list-style-type: none
+    }
+    .comment-author, .says {
+        color: #999
+    }
+    .pagenation-wrap {
+        margin-top: 50px;
+        font-size: 12px
+    }
+    .pn-current {
+        background: #01ff2b;
+        color: #000;
+        display: inline-block;
+        padding: 7px 10px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px
+    }
+    .pn-active {
+        text-decoration: none;
+        background: #333;
+        display: inline-block;
+        padding: 7px 10px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px
+    }
+    .pagenation {
+        margin-right: 12px
+    }
+    footer p {
+        color: #666;
+        font-size: 12px;
+        padding: 80px 0;
+        text-align: right -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        border-radius: 3px
+    }
+    @media screen and (max-width: 1109px) {
+        .localNavArchives li a {
+            padding: 10px 45px;
+            margin-top: 20px;
+        }
+        pre {
+            overflow: scroll;
+            -webkit-overflow-scrolling: touch
+        }
+        #container, #main, #side, #outLink, #localNav {
+            width: 100%
+        }
+        .outNavItem {
+            text-align: center
+        }
+        .outNavItem li {
+            display: inline-block
+        }
+        .outNavItem li a {
+            padding: 18px
+        }
+        #header, .location, .logo {
+            display: block;
+            text-align: center
+        }
+        #header {
+            padding: 40px 0;
+        }
+        .logo a {
+            font-size: 28px;
+        }
+        .location {
+            margin-top: 10px;
+        }
+        .location p {
+            font-size: 18px;
+        }
+        .title, .tags {
+            display: inline-block
+        }
+        .home-article .tags {
+            width: 25%;
+            display: inline-block;
+            text-align: left;
+        }
+       .tags {
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .pn-current, .pn-active {
+            padding: 13px 20px
+        }
+        .pagenation {
+            margin: 0 10px
+        }
+        .pagenation-wrap {
+            text-align: center;
+            margin: 50px 0
+        }
+        .date {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .title {
+            text-align: left;
+            width: 75%;
+        }
+        .home-article a {
+            padding: 5% 7%;
+            width: 86%;
+        }
+        .single-content-parts, .tags {
+            vertical-align: top;
+        }
+        .home-article .single-content-parts {
+            display: inline-block;
+        }
+        .single-content-parts {
+            width: 100%;
+        }
+        .title h1 {
+            font-size: 30px;
+        }
+        .home-article .title h1 {
+            font-size: 16px;
+            display: inline-block;
+            line-height: 23px;
+        }
+        .image {
+            width: 20%;
+            margin: 0;
+        }
+        footer p {
+            text-align: center;
+            padding: 50px 0 80px 0
+        }
+        .single-content .content p {
+            margin: 25px auto 0
+        }
+        figcaption {
+            text-align: left;
+            margin-left: 15px
+        }
+        .comments textarea {
+            min-width: 100%;
+            width: 100%
+        }
+        pre, .comments {
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -ms-border-radius: 0;
+            -o-border-radius: 0;
+            border-radius: 0
+        }
+        .math:before, .programming:before, .blog:before {
+            width: 30px
+        }
+        .math, .blog, .programming {
+            padding: 16px 0 16px 45px
+        }
+        .single-content .content p {
+            margin: 20px 33px 0
+        }
+        .single-content-header {
+            text-align: center;
+            padding: 0 33px;
+        }
+        .home-article .single-content-header {
+            text-align: left
+            padding: 0;
+        }
+        .home-article .tags {
+            display:none;
+        }
+        .single-content .title {
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+        .home-article .title {
+            text-align: left;
+            width: 77%;
+            margin-right: 3%;
+        }
+        .single-content .content h2 {
+            max-width: 530px;
+            line-height: 33px;
+            margin: 35px 33px 0
+        }
+        .single-content .content ul {
+            margin: 25px 20px 0 50px
+        }
+        .align-right {
+            float: none;
+            display: block;
+            margin-top: 30px
+        }
+        #commentform p {
+            margin: 20px 0 0 0
+        }
+        .comments input[type="text"], .comments textarea {
+            width: 100%;
+            min-width: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -ms-border-radius: 0;
+            -o-border-radius: 0;
+            border-radius: 0;
+            padding: 11px 0
+        }
+        .comments {
+            text-align: center;
+            padding: 30px 0
+        }
+        .tags li a {
+            margin-bottom: 10px
+        }
+        .home-article.cat-algorithms:hover h1:after {
+            content: none;
+        }
+        .home-article.cat-blog:hover h1:after {
+            content: none;
+        }
+        .home-article.cat-programming:hover h1:after {
+            content: none;
+        }
+    }
+</style>
+
+        <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+
+        <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "\"Gene\"",
+        "author": {
+            "@type": "Person",
+            "name": "Atsushi Mori"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "FamilyLand, Inc."
+        },
+         "image": [
+        ""
+        ],
+        "datePublished": "Wed, Dec 21, 2016"
+    }
+</script>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    </head>
+    <body>
+<amp-analytics type="googleanalytics" id="analytics1">
+<script type="application/json">
+{
+  "vars": {
+    "account": "UA-74697575-3"
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "pageview"
+    }
+  }
+}
+</script>
+</amp-analytics>
+        <div id="container">
+            <header>
+                <div id="header">
+                    <div class="logo">
+                        <p class="logoTitle"><a href="/">@tsushimori</a></p>
+                    </div>
+                    <div class="location">
+                        
+                        <p class="title-blog">blog</p>
+                        
+                    </div>
+                </div>
+            </header>
+            <div id="content">
+                <div id="main" class="single-content">
+                    <main>
+                        <div class="single-content-header">
+                            <div class="title">
+                                <h1>Gene</h1>
+                                <p class="date">Dec 21, 2016</p>
+                            </div>
+                            <div class="tags">
+                                <ul><li>Thinking</li></ul>
+                            </div>
+                        </div>
+                        <div class="content single">
+                            
+
+<p>今日もコーディングを続けている。知らないコードを学んでいく工程をはさみながらなので思うようには進みません。ただ、完成は間近です。</p>
+
+<p>コードネームははGene（ジーン）。英語で「遺伝子」という意味です。サイトマネージャーわかりやすく言えばウェブサイトの作成／管理ツール。ボクは本気でこの製品が数千万人、数億人の手にわたることを想像している。今日のウェブサイト制作や管理には無駄が多い。パフォーマンスだって最高レベルではない。Geneをシンプルにとらえることで、本来欲していた要件が非常にシンプルだったことに気づくだろう。</p>
+
+<p>いつだって最高の製品には最高のプロデューサーが必要だ。リリースしてみないと断言はできないが、ボクの考えていることがより真理に近いということを、Geneを通じて証明したい。</p>
+
+<p>なお、β版であるファーストリリースのバージョンはElectronをつかったmacアプリを想定している。もちろん、その先にはいろいろな構想があるのだけれど、一気にはできないので、機能とプラットフォームを限定した形でのリリースを予定しています。</p>
+
+<p>リリースの前に、なぜGeneの開発を進めることにしたのかを説明しておきたい。</p>
+
+<p>ターゲットとなるのはWordpressなどのオープンソースCMSを使用しているユーザーになるだろう。ボクも5年くらいWordpressは使っていた。便利だし、CMS利用の選択肢としては革新的なものだった。ただ、完璧に腑に落ちたことは一度もなかった。だからパーフェクトな製品をつくりたいと思ったんです。</p>
+
+<p>具体的には以下のようなことを改善しようと思っています。</p>
+
+<ul>
+<li>パフォーマンスの向上</li>
+<li>ライティングが身近になるような仕組みづくり</li>
+<li>AMP対応</li>
+<li>検索エンジン対策の平均レベルをあげる仕組みづくり</li>
+<li>セキュリティ問題（PCローカルをフル活用する）</li>
+<li>CPUを用いた人工知能の活用</li>
+</ul>
+
+<p>などなど、ファーストリリースでは機能をどこまで制限するかは未定だが、まずはサイトジェネレーターとして、サイトマネージャーとしての機能が備わっていれば良いと考えている。</p>
+
+<p>macOSアプリをリリースしたら、iOS版を進めたい。静的にサイトを書き出す仕組みだが静的サイトジェネレーターのiOSアプリはなさそうだ。必要だと思う。</p>
+
+<p>それぞれについて少し。</p>
+
+<h2 id="パフォーマンスの向上">パフォーマンスの向上</h2>
+
+<p>WordpressはTTFB(Time to First Byte)がどうしても改善が難しい。それはコアファイルの実行に時間がかかってしまうからどうしようもない。CDNなどを使用したり、AMPを導入したりして表示速度は申し分ないほどに改善ができるが、中途半端な知識でキャッシュを扱うとある環境では画像が表示されなかったり、CSSのスタイルが崩れたりする。そもそもそうしたバグを生まないような仕組みが必要です。</p>
+
+<h2 id="ライティングが身近になるような仕組みづくり">ライティングが身近になるような仕組みづくり</h2>
+
+<p>多くのCMSはブラウザ上にGUIを備えている。アカウントだって必要だ。Geneはローカルアプリなので、PCを開いてアプリを起動すればいつでも書き始められる。インターネット通信の切断があって、1時間かけて途中まで書きかけた記事がパーになることもなくなる。また、シンプルでいけてるUIが日常に溶け込んでいくことを願っている。</p>
+
+<h2 id="amp対応">AMP対応</h2>
+
+<p>AMPはGoogleのサーバーに画像などをキャッシュさせられる仕組みで、準拠したHTMLの記述をすれば、たしかなパフォーマンスを約束してくれる。検索順位的にもモバイルページでは優位になっている例が確認できている。これを使うかどうかを簡単に選べるようにする。ページ毎にワンクリックで導入できれば、とても便利だともう。Wordpressのように別URLの管理など必要ない。（UI、設計にこだわるなら使えないかもしれないが、AMPに頼らなくてもう十分なパフォーマンスを実現できる予定）</p>
+
+<h2 id="検索エンジン対策の平均レベルを上げる仕組みづくり">検索エンジン対策の平均レベルを上げる仕組みづくり</h2>
+
+<p>とくにHTMLのhead情報に関してはパターンが決まっているのに、個々にカスタマイズをさせると品質にばらつきがでてしまう。Geneもテーマの適用という概念をとりいれる予定だが、head情報はテーマ制作者には変更できないようにする予定だ。そもそも毎回記述するの必要がないし、OGPの設定やcanonicalの設定なんて自動化すべきことだからです。もちろん検索エンジンの対策については多岐にわたるという反論もあるとおもうので、一部の対策という理解でいてもらいたい。</p>
+
+<h2 id="セキュリティ問題">セキュリティ問題</h2>
+
+<p>Wordpressの課題としていつもくっついてくるのがセキュリティ問題である。なぜみんなブラウザGUIを使うのだろうか。アプリケーションにすればセキュリティ問題は最小限にとどめることができる。これもシンプルに考えた末の真実だと思っている。</p>
+
+<h2 id="cpuを用いた人工知能の活用">CPUを用いた人工知能の活用</h2>
+
+<p>Webは時期に次世代の進化をとげる。そのときにオープンソースは乗り遅れることになると思っています。また数十年先になればサーバーコストも低くなって、オープンソースにできるかもしれないが、人工知能の活用はどうしても十分な性能を出せるプラットフォームが必要になる。だから最初のうちは大企業しか参入できないだろう。だとすると時代の変化に併せて改善を最速で進めていくためには個々のCPUを使うことが鍵になってくる。まだディープラーニングなどのアルゴリズムだとCPUだとスペックが足りないが、より効率のよいアルゴリズムが開発されるか、ボクが開発するだろう。</p>
+
+<p>Geneは次世代のウェブマネジメントを牽引するツールになる。
+そう信じている。</p>
+
+                        </div>
+                    </main>
+                </div>
+                <div id="side">
+                    <div id="outLink">
+                        <ul class="outNavItem">
+                            <li><a href="https://github.com/tsushimori" target="_blank"><amp-img src="/img/icon-gifhub.png" width="22" height="22" alt="GitHub"></amp-img></a></li>
+                            <li><a href="https://twitter.com/tsushimori" target="_blank"><amp-img src="/img/icon-twitter.png" width="22" height="22" alt="Twitter"></amp-img></a></li>
+                            <li><a href="http://www.familyland.co.jp/" target="_blank"><amp-img src="/img/icon-familyland.png" width="22" height="22" alt="FamilyLand"></amp-img></a></li>
+                        </ul>
+                    </div>
+                    <nav id="localNav">
+                        <ul class="locakNavItem">
+                            <li><a class="blog" href="/categories/blog/">BLOG</a></li>
+                            <li><a class="programming" href="/categories/programming/">PROGURAMMING</a></li>
+                            <li><a class="math" href="/categories/algorithms/">ALGORITHMS</a></li>
+                        </ul>
+                        <ul class="localNavArchives">
+                            
+                            <li><a href="/tags/thinking">thinking</a></li>
+                            
+                            <li><a href="/tags/javascript">javascript</a></li>
+                            
+                            <li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li>
+                            
+                            <li><a href="/tags/encoding">encoding</a></li>
+                            
+                            <li><a href="/tags/quantum">quantum</a></li>
+                            
+                            <li><a href="/tags/sqlite">sqlite</a></li>
+                            
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <footer>
+    <p>&copy; 2016 @tsushimori <a class="align-right" href="http://www.atsushimori.com/profile/">Hi !</a></p>
+</footer>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,11 @@
+baseurl = "http://jp.atsushimori.com"
+languageCode = "ja"
+title = "Atsushi Mori's blog"
+
+[params]
+discription =""
+copyright =""
+github =""
+twitter =""
+facebook =""
+ga = ""

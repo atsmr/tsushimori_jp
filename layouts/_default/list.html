@@ -1,0 +1,89 @@
+<!doctype html>
+<html amp lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ .Title }} - {{ .Site.Title }}</title>
+        <meta name="description" content="{{ .Title }} archive page.">
+        <meta name="robots" content="noindex">
+        <link rel="icon" href="/img/favicon.png">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        {{ partial "amp-style.html" . }}
+        {{ partial "amp-analytics.html" . }}
+        {{ partial "js.html" . }}
+    </head>
+    <body>
+<amp-analytics type="googleanalytics" id="analytics1">
+<script type="application/json">
+{
+  "vars": {
+    "account": "UA-74697575-3"
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "pageview"
+    }
+  }
+}
+</script>
+</amp-analytics>
+        <div id="container">
+            <header>
+                <div id="header">
+                    <div class="logo">
+                        <p class="logoTitle"><a href="/">@tsushimori</a></p>
+                    </div>
+                    <div class="location">
+                        <p class="title-{{ lower .Title }}">{{ .Title }}</p>
+                    </div>
+                </div>
+            </header>
+            <div id="content">
+                <div id="main" class="single-content">
+                    <main>
+                        {{ range .Data.Pages }}
+                        <article class="home-article cat-{{ with .Params.categories }}{{ range . }}{{ . }}{{ end }}{{ end }}">
+                            <a href="{{ .Permalink }}">
+                                <div class="single-content-header">
+                                    <div class="single-content-parts">
+                                        <div class="title">
+                                            <h1>{{ .Title }}</h1>
+                                            <p class="date">{{ .Date.Format "Jan 2, 2006" }}</p>
+                                        </div>
+                                        <div class="image">
+                                            <!--<amp-img src="/img/thumb/test.jpg" width="120" height="120" layout="responsive"></amp-img>-->
+                                        </div>
+                                    </div>
+                                    <div class="tags">
+                                        {{ with .Params.tags }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                        {{ end }}
+                    </main>
+                </div>
+                <div id="side">
+                    <div id="outLink">
+                        <ul class="outNavItem">
+                            <li><a href="https://github.com/tsushimori" target="_blank"><amp-img src="/img/icon-gifhub.png" width="22" height="22" alt="GitHub"></amp-img></a></li>
+                            <li><a href="https://twitter.com/tsushimori" target="_blank"><amp-img src="/img/icon-twitter.png" width="22" height="22" alt="Twitter"></amp-img></a></li>
+                            <li><a href="http://www.familyland.co.jp/" target="_blank"><amp-img src="/img/icon-familyland.png" width="22" height="22" alt="FamilyLand"></amp-img></a></li>
+                        </ul>
+                    </div>
+                    <nav id="localNav">
+                        <ul class="locakNavItem">
+                            <li><a class="blog" href="/categories/blog/">BLOG</a></li>
+                            <li><a class="programming" href="/categories/programming/">PROGURAMMING</a></li>
+                            <li><a class="math" href="/categories/algorithms/">ALGOTITHMS</a></li>
+                        </ul>
+                        <ul class="localNavArchives">
+                            {{ range .Site.Taxonomies.tags.ByCount }}
+                            <li><a href="/tags/{{ .Name | urlize }}">{{ .Name }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        {{ partial "footer.html" . }}

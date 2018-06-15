@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on Atsushi Mori&#39;s blog</title>
+    <link>http://jp.atsushimori.com/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on Atsushi Mori&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 26 Nov 2016 15:12:23 +0900</lastBuildDate>
+    <atom:link href="http://jp.atsushimori.com/tags/c&#43;&#43;/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>C&#43;&#43;でhtmlファイルを連結する方法</title>
+      <link>http://jp.atsushimori.com/how-to-linke-html-files/</link>
+      <pubDate>Sat, 26 Nov 2016 15:12:23 +0900</pubDate>
+      
+      <guid>http://jp.atsushimori.com/how-to-linke-html-files/</guid>
+      <description>
+
+&lt;p&gt;静的サイトジェネレータをつくっていて、C++で複数のHTMLファイル（.txtファイルでもよいですが）を連結する方法を探していたものの、簡単すぎてみんな躓かないのか、方法がわからずにいました。結局、ゼロから考えてシンプルな方法、理屈で方法を実現してみたのでc++のファイル連結レベルで躓いてしまうあなたのためにシェアしておきたいと思います！（意外とシンプル）&lt;/p&gt;
+
+&lt;h2 id=&#34;c-erはガチ勢が多い&#34;&gt;C++erはガチ勢が多い？&lt;/h2&gt;
+
+&lt;p&gt;C++を実務レベルで使ってる人ははっきり言って優秀すぎて初心者には理解できないレベルのシェアをしているような。ファイル連結？簡単だよこうやってこうやって・・・というソースはあれど、理解ができないので、使ったとしても制御できないので使いづらい。いろいろやって連結したり、ファイルの内容をコピーして書き出しファイルに連結して貼り付ければよいとかそんな感じでしたが、ちょっとわかりません。&lt;/p&gt;
+
+&lt;h2 id=&#34;難しいことがきらいなのでシンプルに考えてみた&#34;&gt;難しいことがきらいなのでシンプルに考えてみた&lt;/h2&gt;
+
+&lt;p&gt;今回は、とある外部ファイルを変数に入れて、それを使用して別のHTMLファイルを書き出すということをやってみました。以下のサンプルコードでは仮にheaderテンプレートファイルを別ファイルに書き出すということをやっています。
+ながれとしてはシンプルにifstream（ファイルの入力）を使って外部ファイルを読み込み、それを変数へ格納、ofstream（ファイルの出力）でhtmlファイルを書き出すという流れです。htmlファイルとはただのテキストファイルと変わりませんので、.txtファイルなどでも同じことができます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt; // これはコンソールの入出力とかを扱うやつです。
+#include &amp;lt;fstream&amp;gt; // これがファイルの入出力
+#include &amp;lt;sys/stat.h&amp;gt; // 以下２つはディレクトリ操作につかいます。mkdirとか。
+#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;string&amp;gt; // 文字列を扱うやつです。
+
+using namespace std;
+
+int main() {
+
+  // ifstreamで別ディレクトリにあるheader.htmlファイルを読み込む
+  ifstream head(&amp;quot;any_dir/header.html&amp;quot;);
+
+  // ファイルがなかったときのエラー処理とか入れたほうがいいかも。
+  if (!head) {
+      cout &amp;lt;&amp;lt; &amp;quot;File not found!&amp;quot; &amp;lt;&amp;lt; endl;
+      return 0;
+  }
+
+  // 文字列の変数に格納、今回はファイルの中身を１行ずつ読み込んでいるのでwhileでまわします。
+  string f_header = &amp;quot;&amp;quot;;
+  string header_template = &amp;quot;&amp;quot;;
+  while (getline(header,f_head)) {
+    header_template = header_template + f_header;
+  }
+
+  // これは生成するディレクトリがあるかどうかを判定しています。
+  struct stat st;
+  if(stat(&amp;quot;production&amp;quot;, &amp;amp;st) != 0){
+    mkdir(&amp;quot;production&amp;quot;, 0775);
+  }
+
+  // 書き出し部分productionという」ディレクトリをつくってその中にindex.htmlを書き出します。
+  ofstream html(&amp;quot;production/index.html&amp;quot;);
+  html &amp;lt;&amp;lt; header_template;
+  html &amp;lt;&amp;lt; &amp;quot;やったーヘッダーファイルを連結して表示できた！&amp;quot; &amp;lt;&amp;lt; endl;
+
+　// これはあってもなくてもいいですが、成功しました！というのをターミナルに表示するものです。
+  cout &amp;lt;&amp;lt; &amp;quot;Success!!&amp;quot; &amp;lt;&amp;lt; endl;
+
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;というわけで、あとは適当にやってみてください。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
